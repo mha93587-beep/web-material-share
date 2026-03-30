@@ -11,6 +11,7 @@ const MobileNav = () => {
   const isHome = location.pathname === "/";
   const isFiles = location.pathname === "/files";
   const isShared = location.pathname === "/shared";
+  const isProfile = location.pathname === "/profile";
 
   return (
     <nav className="md:hidden fixed bottom-0 w-full glass-card grid grid-cols-5 h-20 px-2 z-50">
@@ -34,7 +35,7 @@ const MobileNav = () => {
         <Share2 className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Shared</span>
       </a>
-      <a href="#" className="flex flex-col items-center justify-center gap-1 text-muted-foreground">
+      <a href="/profile" className={`flex flex-col items-center justify-center gap-1 ${isProfile ? "text-primary" : "text-muted-foreground"}`}>
         <User className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Profile</span>
       </a>

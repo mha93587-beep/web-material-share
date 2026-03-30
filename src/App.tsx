@@ -8,6 +8,7 @@ import DownloadPage from "./pages/DownloadPage.tsx";
 import UploadPage from "./pages/UploadPage.tsx";
 import FilesPage from "./pages/FilesPage.tsx";
 import SharedPage from "./pages/SharedPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/upload" element={<UploadPage />} />
           <Route path="/files" element={<FilesPage />} />
           <Route path="/shared" element={<SharedPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/d/:fileId" element={<DownloadPageWrapper />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
