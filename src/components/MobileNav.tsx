@@ -10,6 +10,7 @@ const MobileNav = () => {
 
   const isHome = location.pathname === "/";
   const isFiles = location.pathname === "/files";
+  const isShared = location.pathname === "/shared";
 
   return (
     <nav className="md:hidden fixed bottom-0 w-full glass-card grid grid-cols-5 h-20 px-2 z-50">
