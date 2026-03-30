@@ -7,10 +7,11 @@ import {
 import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
+import { useTheme } from "@/hooks/use-theme";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const [notifications, setNotifications] = useState(true);
 
   const stats = [
