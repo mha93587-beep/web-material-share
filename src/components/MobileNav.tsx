@@ -30,7 +30,7 @@ const MobileNav = () => {
           <Plus className="w-7 h-7" />
         </button>
       </div>
-      <a href="#" className="flex flex-col items-center justify-center gap-1 text-muted-foreground">
+      <a href="/shared" className={`flex flex-col items-center justify-center gap-1 ${isShared ? "text-primary" : "text-muted-foreground"}`}>
         <Share2 className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Shared</span>
       </a>
