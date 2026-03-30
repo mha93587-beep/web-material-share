@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import DownloadPage from "./pages/DownloadPage.tsx";
 import UploadPage from "./pages/UploadPage.tsx";
+import FilesPage from "./pages/FilesPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/upload" element={<UploadPage />} />
+          <Route path="/files" element={<FilesPage />} />
           <Route path="/d/:fileId" element={<DownloadPageWrapper />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
