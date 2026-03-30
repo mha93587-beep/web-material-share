@@ -8,13 +8,16 @@ const MobileNav = () => {
   // Don't render on the upload page
   if (location.pathname === "/upload") return null;
 
+  const isHome = location.pathname === "/";
+  const isFiles = location.pathname === "/files";
+
   return (
     <nav className="md:hidden fixed bottom-0 w-full glass-card grid grid-cols-5 h-20 px-2 z-50">
-      <a href="/" className="flex flex-col items-center justify-center gap-1 text-primary">
+      <a href="/" className={`flex flex-col items-center justify-center gap-1 ${isHome ? "text-primary" : "text-muted-foreground"}`}>
         <Home className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Home</span>
       </a>
-      <a href="#" className="flex flex-col items-center justify-center gap-1 text-muted-foreground">
+      <a href="/files" className={`flex flex-col items-center justify-center gap-1 ${isFiles ? "text-primary" : "text-muted-foreground"}`}>
         <Folder className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Files</span>
       </a>
