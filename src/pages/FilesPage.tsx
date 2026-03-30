@@ -216,7 +216,7 @@ const FilesPage = () => {
                             <button className="p-2 rounded-lg hover:bg-surface-container text-muted-foreground hover:text-foreground transition-colors">
                               <Share2 className="w-4 h-4" />
                             </button>
-                            <button className="p-2 rounded-lg hover:bg-surface-container text-muted-foreground hover:text-destructive transition-colors">
+                            <button className="p-2 rounded-lg hover:bg-surface-container text-muted-foreground hover:text-destructive/80 transition-colors">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           </div>
