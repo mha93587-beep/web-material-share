@@ -146,7 +146,7 @@ const Dashboard = () => {
             <div className="bg-surface-container-low rounded-lg p-8">
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-2xl font-bold font-headline">Recent Files</h2>
-                <button className="text-primary font-bold text-sm hover:underline">View All</button>
+                <a href="/files" className="text-primary font-bold text-sm hover:underline">View All</a>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-separate border-spacing-y-3">
