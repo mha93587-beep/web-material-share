@@ -81,6 +81,81 @@
     --sidebar-border: 220 20% 88%;
     --sidebar-ring: 213 100% 37%;
   }
+
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 14% 12%;
+    --card-foreground: 210 20% 92%;
+
+    --popover: 220 14% 12%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 213 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-container: 216 82% 45%;
+    --primary-container-foreground: 0 0% 100%;
+
+    --secondary: 222 32% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --secondary-container: 222 40% 25%;
+
+    --muted: 220 12% 16%;
+    --muted-foreground: 220 10% 58%;
+
+    --accent: 220 12% 16%;
+    --accent-foreground: 210 20% 92%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 20%;
+    --input: 220 12% 20%;
+    --ring: 213 100% 55%;
+
+    /* Material Design extended tokens */
+    --surface: 220 15% 8%;
+    --surface-container: 220 12% 14%;
+    --surface-container-low: 220 12% 11%;
+    --surface-container-high: 220 12% 17%;
+    --surface-container-highest: 220 12% 20%;
+    --surface-container-lowest: 220 14% 6%;
+
+    --on-surface: 210 20% 92%;
+    --on-surface-variant: 220 10% 70%;
+    --outline: 220 8% 40%;
+    --outline-variant: 220 10% 25%;
+
+    --tertiary: 24 80% 55%;
+    --error: 0 72% 55%;
+    --error-container: 0 50% 18%;
+
+    /* Glassmorphism */
+    --glass-bg: 220 14% 12% / 0.8;
+    --glass-border: 220 10% 25% / 0.3;
+    --glass-blur: 40px;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(213 100% 45%), hsl(216 82% 55%));
+    --gradient-glow: linear-gradient(135deg, hsl(213 100% 55% / 0.15), hsl(222 32% 60% / 0.15));
+
+    /* Shadows */
+    --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 40px 80px rgba(0, 0, 0, 0.4);
+    --shadow-primary: 0 8px 16px rgba(0, 120, 255, 0.25);
+
+    --sidebar-background: 220 14% 10%;
+    --sidebar-foreground: 210 20% 92%;
+    --sidebar-primary: 213 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 12% 16%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 220 12% 20%;
+    --sidebar-ring: 213 100% 55%;
+  }
 }
 
 @layer base {

@@ -7,10 +7,11 @@ import {
 import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
+import { useTheme } from "@/hooks/use-theme";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const [notifications, setNotifications] = useState(true);
 
   const stats = [
@@ -31,7 +32,7 @@ const ProfilePage = () => {
     {
       title: "Preferences",
       items: [
-        { icon: Moon, label: "Dark Mode", action: "toggle" as const, value: darkMode, onToggle: () => setDarkMode(!darkMode) },
+        { icon: Moon, label: "Dark Mode", action: "toggle" as const, value: theme === "dark", onToggle: toggleTheme },
         { icon: Bell, label: "Push Notifications", action: "link" as const },
         { icon: HardDrive, label: "Storage Management", action: "link" as const },
       ],
