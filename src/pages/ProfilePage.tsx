@@ -23,7 +23,7 @@ const ProfilePage = () => {
     {
       title: "Account",
       items: [
-        { icon: User, label: "Edit Profile", action: "link" as const },
+        { icon: User, label: "Edit Profile", action: "link" as const, path: "/profile/edit" },
         { icon: Mail, label: "Email Notifications", action: "toggle" as const, value: notifications, onToggle: () => setNotifications(!notifications) },
         { icon: Shield, label: "Privacy & Security", action: "link" as const },
       ],
