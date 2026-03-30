@@ -23,7 +23,7 @@ const ProfilePage = () => {
     {
       title: "Account",
       items: [
-        { icon: User, label: "Edit Profile", action: "link" as const },
+        { icon: User, label: "Edit Profile", action: "link" as const, path: "/profile/edit" },
         { icon: Mail, label: "Email Notifications", action: "toggle" as const, value: notifications, onToggle: () => setNotifications(!notifications) },
         { icon: Shield, label: "Privacy & Security", action: "link" as const },
       ],
@@ -106,6 +106,7 @@ const ProfilePage = () => {
               {group.items.map((item) => (
                 <div
                   key={item.label}
+                  onClick={item.action === "link" && "path" in item ? () => navigate((item as any).path) : undefined}
                   className="flex items-center gap-3 px-5 py-4 hover:bg-surface-container-low/50 transition-colors cursor-pointer"
                 >
                   <item.icon className="w-5 h-5 text-muted-foreground shrink-0" />
