@@ -32,7 +32,7 @@ const ProfilePage = () => {
     {
       title: "Preferences",
       items: [
-        { icon: Moon, label: "Dark Mode", action: "toggle" as const, value: darkMode, onToggle: () => setDarkMode(!darkMode) },
+        { icon: Moon, label: "Dark Mode", action: "toggle" as const, value: theme === "dark", onToggle: toggleTheme },
         { icon: Bell, label: "Push Notifications", action: "link" as const },
         { icon: HardDrive, label: "Storage Management", action: "link" as const },
       ],
