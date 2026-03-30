@@ -35,7 +35,7 @@ const MobileNav = () => {
         <Share2 className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Shared</span>
       </a>
-      <a href="#" className="flex flex-col items-center justify-center gap-1 text-muted-foreground">
+      <a href="/profile" className={`flex flex-col items-center justify-center gap-1 ${isProfile ? "text-primary" : "text-muted-foreground"}`}>
         <User className="w-5 h-5" />
         <span className="text-[10px] font-bold uppercase tracking-widest">Profile</span>
       </a>

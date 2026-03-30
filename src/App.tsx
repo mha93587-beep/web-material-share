@@ -24,6 +24,7 @@ const App = () => (
           <Route path="/upload" element={<UploadPage />} />
           <Route path="/files" element={<FilesPage />} />
           <Route path="/shared" element={<SharedPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/d/:fileId" element={<DownloadPageWrapper />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
