@@ -5,8 +5,10 @@ import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
 import { toast } from "@/hooks/use-toast";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 const EditProfilePage = () => {
+  useDocumentTitle("Edit Profile");
   const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: "John",

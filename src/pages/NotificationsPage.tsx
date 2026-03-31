@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 const notifications = [
   { id: 1, icon: Share2, title: "File shared with you", desc: "Alice shared 'Project Brief.pdf'", time: "2 min ago", unread: true },
@@ -13,6 +14,7 @@ const notifications = [
 ];
 
 const NotificationsPage = () => {
+  useDocumentTitle("Notifications");
   const navigate = useNavigate();
 
   return (

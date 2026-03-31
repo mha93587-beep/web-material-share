@@ -8,8 +8,10 @@ import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
 import { useTheme } from "@/hooks/use-theme";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 const ProfilePage = () => {
+  useDocumentTitle("Profile");
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const [notifications, setNotifications] = useState(true);

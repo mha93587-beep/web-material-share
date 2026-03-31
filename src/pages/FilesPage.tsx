@@ -8,6 +8,7 @@ import {
 import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 interface FileItem {
   id: string;
@@ -44,6 +45,7 @@ const fileIconMap: Record<string, { icon: typeof FileText; bgClass: string; text
 };
 
 const FilesPage = () => {
+  useDocumentTitle("My Files");
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [activeFolder, setActiveFolder] = useState("All Files");
