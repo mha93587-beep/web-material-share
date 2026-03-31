@@ -8,6 +8,7 @@ import { toast } from "@/hooks/use-toast";
 import useDocumentTitle from "@/hooks/use-document-title";
 
 const EditProfilePage = () => {
+  useDocumentTitle("Edit Profile");
   const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: "John",

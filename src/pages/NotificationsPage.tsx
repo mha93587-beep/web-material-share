@@ -14,6 +14,7 @@ const notifications = [
 ];
 
 const NotificationsPage = () => {
+  useDocumentTitle("Notifications");
   const navigate = useNavigate();
 
   return (

@@ -45,6 +45,7 @@ const fileIconMap: Record<string, { icon: typeof FileText; bgClass: string; text
 };
 
 const FilesPage = () => {
+  useDocumentTitle("My Files");
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [activeFolder, setActiveFolder] = useState("All Files");

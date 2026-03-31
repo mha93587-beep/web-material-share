@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import useDocumentTitle from "@/hooks/use-document-title";
 
 const UploadPage = () => {
+  useDocumentTitle("Upload");
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);

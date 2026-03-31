@@ -35,6 +35,7 @@ const fileIconMap: Record<string, { icon: typeof FileText; bgClass: string; text
 };
 
 const SharedPage = () => {
+  useDocumentTitle("Shared Files");
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [searchQuery, setSearchQuery] = useState("");

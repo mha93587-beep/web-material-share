@@ -1,6 +1,8 @@
 import { Download, Database, Calendar, DownloadCloud, ShieldCheck, Zap, Lock, CloudCog } from "lucide-react";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 const DownloadPage = () => {
+  useDocumentTitle("Download");
   return (
     <main className="min-h-screen pt-20 pb-12 flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
