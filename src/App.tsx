@@ -11,6 +11,7 @@ import FilesPage from "./pages/FilesPage.tsx";
 import SharedPage from "./pages/SharedPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import EditProfilePage from "./pages/EditProfilePage.tsx";
+import NotificationsPage from "./pages/NotificationsPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
