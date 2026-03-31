@@ -11,6 +11,7 @@ import FilesPage from "./pages/FilesPage.tsx";
 import SharedPage from "./pages/SharedPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import EditProfilePage from "./pages/EditProfilePage.tsx";
+import NotificationsPage from "./pages/NotificationsPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/shared" element={<SharedPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/d/:fileId" element={<DownloadPageWrapper />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

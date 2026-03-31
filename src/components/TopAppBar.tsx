@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Bell, Settings, Search } from "lucide-react";
+import { Bell, Search } from "lucide-react";
 
 const TopAppBar = () => {
   const location = useLocation();
@@ -39,15 +39,10 @@ const TopAppBar = () => {
             />
           </div>
         )}
-        <button className="p-2 hover:bg-muted rounded-full transition-all active:scale-95">
+        <Link to="/notifications" className="p-2 hover:bg-muted rounded-full transition-all active:scale-95 relative">
           <Bell className="w-5 h-5 text-muted-foreground" />
-        </button>
-        <button className="p-2 hover:bg-muted rounded-full transition-all active:scale-95">
-          <Settings className="w-5 h-5 text-muted-foreground" />
-        </button>
-        <div className="w-10 h-10 rounded-full overflow-hidden ml-2 ring-2 ring-primary/10 bg-primary/10 flex items-center justify-center">
-          <span className="text-primary font-bold text-sm">A</span>
-        </div>
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary" />
+        </Link>
       </div>
     </header>
   );
