@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Bell, Settings, Search } from "lucide-react";
+import { Bell, Search } from "lucide-react";
 
 const TopAppBar = () => {
   const location = useLocation();
