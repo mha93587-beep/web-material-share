@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/hooks/use-theme";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import AppLayout from "@/components/AppLayout";
 import Index from "./pages/Index.tsx";
 import DownloadPage from "./pages/DownloadPage.tsx";
 import UploadPage from "./pages/UploadPage.tsx";
@@ -24,32 +25,22 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/upload" element={<UploadPage />} />
-            <Route path="/files" element={<FilesPage />} />
-            <Route path="/shared" element={<SharedPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/profile/edit" element={<EditProfilePage />} />
-            <Route path="/notifications" element={<NotificationsPage />} />
-            <Route path="/d/:fileId" element={<DownloadPageWrapper />} />
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/upload" element={<UploadPage />} />
+              <Route path="/files" element={<FilesPage />} />
+              <Route path="/shared" element={<SharedPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/profile/edit" element={<EditProfilePage />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
+              <Route path="/d/:fileId" element={<DownloadPage />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
-);
-
-// Wrapper to include header/footer on download page
-import TopAppBar from "@/components/TopAppBar";
-import Footer from "@/components/Footer";
-
-const DownloadPageWrapper = () => (
-  <div className="bg-background min-h-screen">
-    <TopAppBar />
-    <DownloadPage />
-    <Footer />
-  </div>
 );
 
 export default App;
