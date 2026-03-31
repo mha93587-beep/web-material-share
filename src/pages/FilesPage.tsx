@@ -8,6 +8,7 @@ import {
 import TopAppBar from "@/components/TopAppBar";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 interface FileItem {
   id: string;

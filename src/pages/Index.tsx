@@ -3,13 +3,18 @@ import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import Dashboard from "@/components/Dashboard";
 import Footer from "@/components/Footer";
+import useDocumentTitle from "@/hooks/use-document-title";
 
 const Index = () => {
+  useDocumentTitle();
+
   return (
     <div className="bg-background min-h-screen">
       <TopAppBar />
       <Sidebar />
-      <Dashboard />
+      <main>
+        <Dashboard />
+      </main>
       <MobileNav />
       <Footer />
     </div>
