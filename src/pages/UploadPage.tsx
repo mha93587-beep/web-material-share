@@ -1,10 +1,9 @@
 import { useCallback, useState, useRef } from "react";
 import { Upload, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 const UploadPage = () => {
-  useDocumentTitle("Upload");
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -39,6 +38,12 @@ const UploadPage = () => {
   const dashOffset = circumference - (progress / 100) * circumference;
 
   return (
+    <>
+      <SEOMeta
+        title="Upload Files"
+        description="Upload your documents, images, videos, and archives securely to your Web Material vault. Drag and drop files or browse to get started."
+        canonical="/upload"
+      />
     <main className="pt-20 px-4 md:px-8 lg:px-12 pb-12 max-w-3xl mx-auto min-h-[80vh] flex flex-col">
       <button
         onClick={() => navigate("/")}
@@ -109,6 +114,7 @@ const UploadPage = () => {
         Max file size: 2 GB &middot; Supported formats: All file types
       </p>
     </main>
+    </>
   );
 };
 

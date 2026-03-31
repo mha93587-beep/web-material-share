@@ -5,10 +5,9 @@ import {
   LogOut, ChevronRight, Camera, Star, FileText, Share2
 } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 const ProfilePage = () => {
-  useDocumentTitle("Profile");
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const [notifications, setNotifications] = useState(true);
@@ -39,6 +38,13 @@ const ProfilePage = () => {
   ];
 
   return (
+    <>
+      <SEOMeta
+        title="My Profile"
+        description="Manage your Web Material profile, account settings, storage, privacy preferences, and notification options."
+        canonical="/profile"
+        noIndex
+      />
     <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-3xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mt-4 mb-6">
@@ -136,6 +142,7 @@ const ProfilePage = () => {
         <span className="text-sm font-bold">Sign Out</span>
       </button>
     </main>
+    </>
   );
 };
 

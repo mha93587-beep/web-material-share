@@ -1,9 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 const NotFound = () => {
-  useDocumentTitle("Page Not Found");
   const location = useLocation();
 
   useEffect(() => {
@@ -11,6 +10,12 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
+    <>
+      <SEOMeta
+        title="Page Not Found"
+        description="The page you are looking for does not exist on Web Material."
+        noIndex
+      />
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="text-center">
         <h1 className="mb-4 text-4xl font-bold">404</h1>
@@ -20,6 +25,7 @@ const NotFound = () => {
         </a>
       </div>
     </div>
+    </>
   );
 };
 

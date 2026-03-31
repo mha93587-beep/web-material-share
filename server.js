@@ -40,8 +40,21 @@ async function createServer() {
         render = serverEntry.render;
       }
 
-      const { html: appHtml } = await render(url);
-      const html = template.replace("<!--app-html-->", appHtml);
+      const { html: appHtml, helmetContext } = await render(url);
+      const { helmet } = helmetContext ?? {};
+      const headTags = helmet
+        ? [
+            helmet.title?.toString() ?? "",
+            helmet.meta?.toString() ?? "",
+            helmet.link?.toString() ?? "",
+            helmet.script?.toString() ?? "",
+          ]
+            .filter((s) => s.trim())
+            .join("\n    ")
+        : "";
+      const html = template
+        .replace("<!--ssr-head-->", headTags)
+        .replace("<!--app-html-->", appHtml);
 
       res.status(200).set({ "Content-Type": "text/html" }).send(html);
     } catch (e) {

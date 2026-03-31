@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Camera, Save, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 const EditProfilePage = () => {
-  useDocumentTitle("Edit Profile");
   const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: "John",
@@ -55,6 +54,13 @@ const EditProfilePage = () => {
   ];
 
   return (
+    <>
+      <SEOMeta
+        title="Edit Profile"
+        description="Update your Web Material profile — name, email, bio, website, and social links."
+        canonical="/profile/edit"
+        noIndex
+      />
     <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-2xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mt-4 mb-6">
@@ -140,6 +146,7 @@ const EditProfilePage = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 

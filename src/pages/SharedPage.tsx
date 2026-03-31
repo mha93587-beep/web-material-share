@@ -4,7 +4,7 @@ import {
   FileText, Image, Film, Archive, Search, Grid3X3, List,
   Download, Share2, Copy, Check, Clock, Star, ArrowLeft, Link2
 } from "lucide-react";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 interface SharedFile {
   id: string;
@@ -17,10 +17,10 @@ interface SharedFile {
 }
 
 const sharedFiles: SharedFile[] = [
-  { id: "1", name: "Quarterly_Report_2024.pdf", size: "4.2 MB", date: "Oct 24, 2023", type: "pdf", starred: true, shareLink: "webmaterial.org/d/aX7z9" },
-  { id: "3", name: "Keynote_Hero_Video.mp4", size: "856.0 MB", date: "Oct 22, 2023", type: "video", starred: true, shareLink: "webmaterial.org/d/bK4m2" },
-  { id: "6", name: "Presentation_Final.pdf", size: "12.8 MB", date: "Oct 19, 2023", type: "pdf", starred: true, shareLink: "webmaterial.org/d/cN8p3" },
-  { id: "10", name: "Banner_Design.jpg", size: "8.4 MB", date: "Oct 15, 2023", type: "image", starred: false, shareLink: "webmaterial.org/d/dR2v5" },
+  { id: "1", name: "Quarterly_Report_2024.pdf", size: "4.2 MB", date: "Oct 24, 2023", type: "pdf", starred: true, shareLink: "webmaterial.org/download/quarterly-report-2024-pdf-r2024" },
+  { id: "3", name: "Keynote_Hero_Video.mp4", size: "856.0 MB", date: "Oct 22, 2023", type: "video", starred: true, shareLink: "webmaterial.org/download/keynote-hero-video-mp4-kv2023" },
+  { id: "6", name: "Presentation_Final.pdf", size: "12.8 MB", date: "Oct 19, 2023", type: "pdf", starred: true, shareLink: "webmaterial.org/download/presentation-final-pdf-pf2023" },
+  { id: "10", name: "Banner_Design.jpg", size: "8.4 MB", date: "Oct 15, 2023", type: "image", starred: false, shareLink: "webmaterial.org/download/banner-design-jpg-bd2023" },
 ];
 
 const fileIconMap: Record<string, { icon: typeof FileText; bgClass: string; textClass: string }> = {
@@ -32,7 +32,6 @@ const fileIconMap: Record<string, { icon: typeof FileText; bgClass: string; text
 };
 
 const SharedPage = () => {
-  useDocumentTitle("Shared Files");
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,6 +48,12 @@ const SharedPage = () => {
   };
 
   return (
+    <>
+      <SEOMeta
+        title="Shared Files"
+        description="View and manage all files you have shared with others. Copy share links, track who has access, and control sharing permissions."
+        canonical="/shared"
+      />
     <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-7xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mt-4 mb-6">
@@ -195,6 +200,7 @@ const SharedPage = () => {
         </div>
       )}
     </main>
+    </>
   );
 };
 

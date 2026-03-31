@@ -1,6 +1,6 @@
 import { ArrowLeft, FileText, Share2, Shield, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 const notifications = [
   { id: 1, icon: Share2, title: "File shared with you", desc: "Alice shared 'Project Brief.pdf'", time: "2 min ago", unread: true },
@@ -11,10 +11,16 @@ const notifications = [
 ];
 
 const NotificationsPage = () => {
-  useDocumentTitle("Notifications");
   const navigate = useNavigate();
 
   return (
+    <>
+      <SEOMeta
+        title="Notifications"
+        description="View your latest notifications — file shares, uploads, security alerts, and activity updates on your Web Material account."
+        canonical="/notifications"
+        noIndex
+      />
     <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-3xl mx-auto">
       <div className="flex items-center gap-3 mt-4 mb-6">
         <button
@@ -53,6 +59,7 @@ const NotificationsPage = () => {
         ))}
       </div>
     </main>
+    </>
   );
 };
 

@@ -13,9 +13,9 @@ interface UploadedFile {
 }
 
 const mockFiles: UploadedFile[] = [
-  { id: "1", name: "Quarterly_Report_2024.pdf", size: "4.2 MB", date: "Oct 24, 2023", type: "pdf", status: "Secure", shareLink: "webmaterial.org/d/aX7z9" },
+  { id: "1", name: "Quarterly_Report_2024.pdf", size: "4.2 MB", date: "Oct 24, 2023", type: "pdf", status: "Secure", shareLink: "webmaterial.org/download/quarterly-report-2024-pdf-r2024" },
   { id: "2", name: "Brand_Assets_V2.zip", size: "128.5 MB", date: "Oct 23, 2023", type: "archive", status: "Syncing" },
-  { id: "3", name: "Keynote_Hero_Video.mp4", size: "856.0 MB", date: "Oct 22, 2023", type: "video", status: "Secure", shareLink: "webmaterial.org/d/bK4m2" },
+  { id: "3", name: "Keynote_Hero_Video.mp4", size: "856.0 MB", date: "Oct 22, 2023", type: "video", status: "Secure", shareLink: "webmaterial.org/download/keynote-hero-video-mp4-kv2023" },
 ];
 
 const fileIcons: Record<string, { icon: typeof FileText; bgClass: string; textClass: string }> = {

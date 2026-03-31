@@ -5,7 +5,7 @@ import {
   MoreVertical, Download, Share2, Trash2, FolderOpen, ArrowLeft,
   SortAsc, Filter, Plus, Copy, Check, HardDrive, Clock, Star
 } from "lucide-react";
-import useDocumentTitle from "@/hooks/use-document-title";
+import { SEOMeta } from "@/components/SEOMeta";
 
 interface FileItem {
   id: string;
@@ -19,16 +19,16 @@ interface FileItem {
 }
 
 const allFiles: FileItem[] = [
-  { id: "1", name: "Quarterly_Report_2024.pdf", size: "4.2 MB", date: "Oct 24, 2023", type: "pdf", folder: "Documents", starred: true, shareLink: "webmaterial.org/d/aX7z9" },
+  { id: "1", name: "Quarterly_Report_2024.pdf", size: "4.2 MB", date: "Oct 24, 2023", type: "pdf", folder: "Documents", starred: true, shareLink: "webmaterial.org/download/quarterly-report-2024-pdf-r2024" },
   { id: "2", name: "Brand_Assets_V2.zip", size: "128.5 MB", date: "Oct 23, 2023", type: "archive", folder: "Projects", starred: false },
-  { id: "3", name: "Keynote_Hero_Video.mp4", size: "856.0 MB", date: "Oct 22, 2023", type: "video", folder: "Media", starred: true, shareLink: "webmaterial.org/d/bK4m2" },
+  { id: "3", name: "Keynote_Hero_Video.mp4", size: "856.0 MB", date: "Oct 22, 2023", type: "video", folder: "Media", starred: true, shareLink: "webmaterial.org/download/keynote-hero-video-mp4-kv2023" },
   { id: "4", name: "Profile_Photo.jpg", size: "2.1 MB", date: "Oct 21, 2023", type: "image", folder: "Media", starred: false },
   { id: "5", name: "Invoice_September.pdf", size: "340 KB", date: "Oct 20, 2023", type: "pdf", folder: "Documents", starred: false },
-  { id: "6", name: "Presentation_Final.pdf", size: "12.8 MB", date: "Oct 19, 2023", type: "pdf", folder: "Projects", starred: true },
+  { id: "6", name: "Presentation_Final.pdf", size: "12.8 MB", date: "Oct 19, 2023", type: "pdf", folder: "Projects", starred: true, shareLink: "webmaterial.org/download/presentation-final-pdf-pf2023" },
   { id: "7", name: "Product_Demo.mp4", size: "1.2 GB", date: "Oct 18, 2023", type: "video", folder: "Media", starred: false },
   { id: "8", name: "Logo_Pack.zip", size: "45.3 MB", date: "Oct 17, 2023", type: "archive", folder: "Projects", starred: false },
   { id: "9", name: "Meeting_Notes.pdf", size: "120 KB", date: "Oct 16, 2023", type: "document", folder: "Documents", starred: false },
-  { id: "10", name: "Banner_Design.jpg", size: "8.4 MB", date: "Oct 15, 2023", type: "image", folder: "Media", starred: true },
+  { id: "10", name: "Banner_Design.jpg", size: "8.4 MB", date: "Oct 15, 2023", type: "image", folder: "Media", starred: true, shareLink: "webmaterial.org/download/banner-design-jpg-bd2023" },
 ];
 
 const folders = ["All Files", "Documents", "Media", "Projects"];
@@ -42,7 +42,6 @@ const fileIconMap: Record<string, { icon: typeof FileText; bgClass: string; text
 };
 
 const FilesPage = () => {
-  useDocumentTitle("My Files");
   const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [activeFolder, setActiveFolder] = useState("All Files");
@@ -64,6 +63,12 @@ const FilesPage = () => {
   };
 
   return (
+    <>
+      <SEOMeta
+        title="File Manager"
+        description="Manage, organize, and share all your uploaded files in one place. Access your documents, images, videos, and archives in your Web Material vault."
+        canonical="/files"
+      />
     <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-7xl mx-auto">
       {/* Header */}
       <div className="flex items-center gap-3 mt-4 mb-6">
@@ -272,6 +277,7 @@ const FilesPage = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 
