@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ isSsrBuild }) => ({
   server: {
     host: "0.0.0.0",
     port: 5000,
@@ -20,5 +20,18 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist/client",
+    ...(isSsrBuild && {
+      rollupOptions: {
+        output: {
+          format: "es",
+        },
+      },
+    }),
   },
+  ...(isSsrBuild && {
+    ssr: {
+      noExternal: true,
+      target: "webworker",
+    },
+  }),
 }));
