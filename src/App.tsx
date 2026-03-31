@@ -30,6 +30,7 @@ const App = () => (
             <Route path="/shared" element={<SharedPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
+            <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/d/:fileId" element={<DownloadPageWrapper />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
