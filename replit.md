@@ -27,13 +27,24 @@ src/
 ## Running the App
 
 ```bash
-npm run dev
+npm run dev      # Dev SSR server (port 5000)
+npm run build    # Production build (client + server bundles)
+npm run preview  # Run production SSR server
 ```
 
-The dev server runs at port 5000.
+## SSR Architecture
+
+SSR is enabled via a custom Express server (`server.js`) with Vite middleware in dev mode:
+
+- `src/entry-client.tsx` — Client hydration entry (uses `hydrateRoot` + `BrowserRouter`)
+- `src/entry-server.tsx` — Server render entry (uses `renderToString` + `StaticRouter`)
+- `server.js` — Express server: in dev uses Vite middleware; in prod serves from `dist/`
+- `index.html` — Has `<!--app-html-->` placeholder replaced by server-rendered HTML
+- Build output: `dist/client/` (frontend assets) and `dist/server/` (SSR bundle)
 
 ## Key Notes
 
-- Pure frontend app — no backend server required
+- SSR enabled: every page's full HTML is rendered on the server before sending to the browser
 - `lovable-tagger` dev plugin was removed (Lovable-specific, not needed on Replit)
-- Vite config updated for Replit: `host: "0.0.0.0"`, `allowedHosts: true`, port 5000
+- `use-theme.tsx` is SSR-safe: browser APIs (`localStorage`, `window`) only accessed in `useEffect`
+- Vite config: `host: "0.0.0.0"`, `allowedHosts: true`, port 5000, `build.outDir: dist/client`
