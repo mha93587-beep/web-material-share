@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Camera, Save, X } from "lucide-react";
-import TopAppBar from "@/components/TopAppBar";
-import MobileNav from "@/components/MobileNav";
-import Footer from "@/components/Footer";
 import { toast } from "@/hooks/use-toast";
 import useDocumentTitle from "@/hooks/use-document-title";
 
@@ -58,98 +55,91 @@ const EditProfilePage = () => {
   ];
 
   return (
-    <div className="bg-background min-h-screen">
-      <TopAppBar />
+    <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-2xl mx-auto">
+      {/* Header */}
+      <div className="flex items-center gap-3 mt-4 mb-6">
+        <button
+          onClick={() => navigate("/profile")}
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <h1 className="flex-1 text-2xl md:text-4xl font-extrabold tracking-tight text-foreground font-headline">
+          Edit Profile
+        </h1>
+        <button
+          onClick={() => navigate("/profile")}
+          className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-surface-container transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
-      <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-2xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center gap-3 mt-4 mb-6">
+      {/* Avatar */}
+      <div className="flex flex-col items-center mb-8">
+        <div className="relative">
+          <div className="w-28 h-28 rounded-full gradient-primary flex items-center justify-center text-primary-foreground text-4xl font-extrabold shadow-lg">
+            {initials}
+          </div>
+          <button className="absolute bottom-1 right-1 w-9 h-9 rounded-full bg-surface-container border-2 border-background flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-sm">
+            <Camera className="w-4 h-4" />
+          </button>
+        </div>
+        <p className="text-xs text-muted-foreground mt-3">Tap to change photo</p>
+      </div>
+
+      {/* Form */}
+      <div className="glass-card rounded-2xl p-5 md:p-8 space-y-5">
+        {fields.map((field) => (
+          <div key={field.key}>
+            <label className="block text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">
+              {field.label}
+            </label>
+            {field.multiline ? (
+              <textarea
+                value={form[field.key as keyof typeof form]}
+                onChange={(e) => update(field.key, e.target.value)}
+                placeholder={field.placeholder}
+                rows={3}
+                className={`w-full px-4 py-3 rounded-xl bg-surface-container-low text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all resize-none ${
+                  errors[field.key] ? "ring-2 ring-destructive/50 focus:ring-destructive" : "focus:ring-primary/30"
+                }`}
+              />
+            ) : (
+              <input
+                type={field.type || "text"}
+                value={form[field.key as keyof typeof form]}
+                onChange={(e) => update(field.key, e.target.value)}
+                placeholder={field.placeholder}
+                className={`w-full px-4 py-3 rounded-xl bg-surface-container-low text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all ${
+                  errors[field.key] ? "ring-2 ring-destructive/50 focus:ring-destructive" : "focus:ring-primary/30"
+                }`}
+              />
+            )}
+            {errors[field.key] && (
+              <p className="text-xs text-destructive mt-1.5 font-medium">{errors[field.key]}</p>
+            )}
+          </div>
+        ))}
+
+        {/* Actions */}
+        <div className="flex gap-3 pt-4">
           <button
             onClick={() => navigate("/profile")}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container text-muted-foreground hover:text-foreground transition-colors"
+            className="flex-1 px-4 py-3 rounded-xl bg-surface-container text-foreground font-bold text-sm hover:bg-surface-container-low transition-colors"
           >
-            <ArrowLeft className="w-5 h-5" />
+            Cancel
           </button>
-          <h1 className="flex-1 text-2xl md:text-4xl font-extrabold tracking-tight text-foreground font-headline">
-            Edit Profile
-          </h1>
           <button
-            onClick={() => navigate("/profile")}
-            className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-surface-container transition-colors"
+            onClick={handleSave}
+            className="flex-1 gradient-primary text-primary-foreground px-4 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-shadow"
           >
-            <X className="w-5 h-5" />
+            <Save className="w-4 h-4" />
+            Save Changes
           </button>
         </div>
-
-        {/* Avatar */}
-        <div className="flex flex-col items-center mb-8">
-          <div className="relative">
-            <div className="w-28 h-28 rounded-full gradient-primary flex items-center justify-center text-primary-foreground text-4xl font-extrabold shadow-lg">
-              {initials}
-            </div>
-            <button className="absolute bottom-1 right-1 w-9 h-9 rounded-full bg-surface-container border-2 border-background flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors shadow-sm">
-              <Camera className="w-4 h-4" />
-            </button>
-          </div>
-          <p className="text-xs text-muted-foreground mt-3">Tap to change photo</p>
-        </div>
-
-        {/* Form */}
-        <div className="glass-card rounded-2xl p-5 md:p-8 space-y-5">
-          {fields.map((field) => (
-            <div key={field.key}>
-              <label className="block text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">
-                {field.label}
-              </label>
-              {field.multiline ? (
-                <textarea
-                  value={form[field.key as keyof typeof form]}
-                  onChange={(e) => update(field.key, e.target.value)}
-                  placeholder={field.placeholder}
-                  rows={3}
-                  className={`w-full px-4 py-3 rounded-xl bg-surface-container-low text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all resize-none ${
-                    errors[field.key] ? "ring-2 ring-destructive/50 focus:ring-destructive" : "focus:ring-primary/30"
-                  }`}
-                />
-              ) : (
-                <input
-                  type={field.type || "text"}
-                  value={form[field.key as keyof typeof form]}
-                  onChange={(e) => update(field.key, e.target.value)}
-                  placeholder={field.placeholder}
-                  className={`w-full px-4 py-3 rounded-xl bg-surface-container-low text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-all ${
-                    errors[field.key] ? "ring-2 ring-destructive/50 focus:ring-destructive" : "focus:ring-primary/30"
-                  }`}
-                />
-              )}
-              {errors[field.key] && (
-                <p className="text-xs text-destructive mt-1.5 font-medium">{errors[field.key]}</p>
-              )}
-            </div>
-          ))}
-
-          {/* Actions */}
-          <div className="flex gap-3 pt-4">
-            <button
-              onClick={() => navigate("/profile")}
-              className="flex-1 px-4 py-3 rounded-xl bg-surface-container text-foreground font-bold text-sm hover:bg-surface-container-low transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleSave}
-              className="flex-1 gradient-primary text-primary-foreground px-4 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <Save className="w-4 h-4" />
-              Save Changes
-            </button>
-          </div>
-        </div>
-      </main>
-
-      <MobileNav />
-      <Footer />
-    </div>
+      </div>
+    </main>
   );
 };
 

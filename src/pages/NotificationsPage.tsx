@@ -1,8 +1,5 @@
-import { ArrowLeft, Bell, FileText, Share2, Shield, Trash2 } from "lucide-react";
+import { ArrowLeft, FileText, Share2, Shield, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import TopAppBar from "@/components/TopAppBar";
-import MobileNav from "@/components/MobileNav";
-import Footer from "@/components/Footer";
 import useDocumentTitle from "@/hooks/use-document-title";
 
 const notifications = [
@@ -18,49 +15,44 @@ const NotificationsPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-background min-h-screen">
-      <TopAppBar />
-      <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-3xl mx-auto">
-        <div className="flex items-center gap-3 mt-4 mb-6">
-          <button
-            onClick={() => navigate(-1)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-surface-container text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-          <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-foreground font-headline">
-            Notifications
-          </h1>
-        </div>
+    <main className="pt-20 px-4 md:px-8 lg:px-12 pb-28 md:pb-12 max-w-3xl mx-auto">
+      <div className="flex items-center gap-3 mt-4 mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-surface-container text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-foreground font-headline">
+          Notifications
+        </h1>
+      </div>
 
-        <div className="space-y-2">
-          {notifications.map((n) => (
-            <div
-              key={n.id}
-              className={`glass-card rounded-xl px-5 py-4 flex items-start gap-4 transition-colors hover:bg-surface-container-low/50 cursor-pointer ${
-                n.unread ? "border-l-4 border-l-primary" : ""
-              }`}
-            >
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
-                n.unread ? "bg-primary/10 text-primary" : "bg-surface-container text-muted-foreground"
-              }`}>
-                <n.icon className="w-5 h-5" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className={`text-sm font-bold ${n.unread ? "text-foreground" : "text-muted-foreground"}`}>
-                  {n.title}
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5 truncate">{n.desc}</p>
-                <p className="text-[10px] text-muted-foreground/70 mt-1">{n.time}</p>
-              </div>
-              {n.unread && <div className="w-2 h-2 rounded-full bg-primary shrink-0 mt-2" />}
+      <div className="space-y-2">
+        {notifications.map((n) => (
+          <article
+            key={n.id}
+            className={`glass-card rounded-xl px-5 py-4 flex items-start gap-4 transition-colors hover:bg-surface-container-low/50 cursor-pointer ${
+              n.unread ? "border-l-4 border-l-primary" : ""
+            }`}
+          >
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
+              n.unread ? "bg-primary/10 text-primary" : "bg-surface-container text-muted-foreground"
+            }`}>
+              <n.icon className="w-5 h-5" />
             </div>
-          ))}
-        </div>
-      </main>
-      <MobileNav />
-      <Footer />
-    </div>
+            <div className="flex-1 min-w-0">
+              <p className={`text-sm font-bold ${n.unread ? "text-foreground" : "text-muted-foreground"}`}>
+                {n.title}
+              </p>
+              <p className="text-xs text-muted-foreground mt-0.5 truncate">{n.desc}</p>
+              <time className="text-[10px] text-muted-foreground/70 mt-1 block">{n.time}</time>
+            </div>
+            {n.unread && <div className="w-2 h-2 rounded-full bg-primary shrink-0 mt-2" />}
+          </article>
+        ))}
+      </div>
+    </main>
   );
 };
 
